@@ -1,5 +1,5 @@
 {
-  "WAUroot" : "%ProgramData%\Winget-AutoUpdate",
-  "WAUmods" : "%WAUroot%\Mods",
-  "WAUfunctions" : "%WAUroot%\Functions"
+  "WAUroot" : "%ProgramData%\\Winget-AutoUpdate",
+  "WAUmods" : "%WAUroot%\\Mods",
+  "WAUfunctions" : "%WAUroot%\\Functions"
 }
