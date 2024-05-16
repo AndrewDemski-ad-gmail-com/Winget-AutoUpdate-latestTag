@@ -214,7 +214,7 @@ if (Test-Network) {
                 #If _WAU-mods.ps1 has ExitCode 1 - Re-run WAU
                 if ($ModsExitCode -eq 1) {
                     Write-ToLog "Re-run WAU"
-                    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"$WorkingDir\winget-upgrade.ps1`""
+                    Start-Process powershell -ArgumentList "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command `"$WorkingDir\winget-upgrade.ps1`""
                     Exit
                 }
             }
@@ -245,7 +245,7 @@ if (Test-Network) {
                     New-Item "$WorkingDir\logs\error.txt" -Value "Whitelist doesn't exist in GPO" -Force
                     Exit 1
                 }
-                $toUpdate = $toUpdate.Data
+                foreach ($app in $toUpdate) { Write-ToLog "Include app ${app}" }
             }
             else {
                 $BlackList = $toSkip.GetUpperBound(0)
@@ -254,7 +254,7 @@ if (Test-Network) {
                     New-Item "$WorkingDir\logs\error.txt" -Value "Blacklist doesn't exist in GPO" -Force
                     Exit 1
                 }
-                $toSkip = $toSkip.Data
+                foreach ($app in $toSkip) { Write-ToLog "Exclude app ${app}" }
             }
         }
 
